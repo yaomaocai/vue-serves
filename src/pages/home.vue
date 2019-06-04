@@ -7,7 +7,10 @@
           :maxLength="10"
       />
     </div>
-  <div></div>
+    <div>
+      <p @click="buttonMe()">点我</p>
+    </div>
+    <div></div>
   </div>
 </template>
 
@@ -18,7 +21,6 @@
 
   export default {
     name: 'app',
-
     components: {
       [ TabBar.name ]: TabBar,
       [ Icon.name ]: Icon
@@ -40,6 +42,21 @@
         iconList: [
           'rectangle',
         ]
+      }
+    },
+    mounted () {
+
+    },
+    methods: {
+      buttonMe () {
+        var me = this
+        me.$getHttp('http://test.happymmall.com/product/list.do', {
+          categoryId: 1,
+          orderBy: 'price_desc'
+        },'POST')
+        .then((response) => {
+          response.result//请求返回数据
+        })
       }
     }
   }

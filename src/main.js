@@ -3,6 +3,10 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import {getHttp, postHttp} from './Server/api'
+
+Vue.prototype.$getHttp = getHttp
+Vue.prototype.$postHttp = postHttp
 
 Vue.config.productionTip = false
 
